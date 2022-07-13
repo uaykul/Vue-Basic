@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue.js | codes</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <style>
+            .box{
+                width: 200px;
+                height: 200px;
+                border: 2px solid #555;
+                background-color: #fbbd08;
+                margin-bottom: 10px;
+            }
+            .blue {
+                background-color: blue;
+
+            }
+        </style>
+    </head>
+    
+    <body>
+        <center>
+        <div id="app">
+            <h1>{{ title }}</h1><hr>
+            <button @click="showBlue = !showBlue">Change Color</button>
+            <h2><a v-blind href="/1-vue-js.html">1-Start</a><br>
+            <a v-blind href="/2-vue-js.html">2-Event Binding</a><br>
+            <a v-blind href="/3-vue-js.html">3-Two Way Data Binding</a><br>
+            <a v-blind href="/4-vue-js.html">4-Computed Properties</a><br>
+            <a v-blind href="/6-vue-js.html">6-Condition</a></h2><br>
+            <div class="box" :class="className1"> </div>
+            <div class="box" :class="className1"> </div>
+            <div class="box" :style="{'background-color' :'black'}"> </div>
+                
+           
+           
+        </div> 
+        </center>
+        <script>
+            new Vue({
+                el :"#app",
+                data : {
+                    title:"Class Dynamic Style",
+                    className : "blue",
+                    showBlue:false
+                },
+                computed : {
+                    className1(){
+                        return {'blue' : this.showBlue}
+                    }
+                }
+                          
+            });
+        </script>
+    </body>
+</html>

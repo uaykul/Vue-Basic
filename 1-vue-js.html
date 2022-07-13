@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js | codes</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <center>
+    <div id="app">
+        <h3>{{title}}</h3>
+        <button>{{buttontitle}}</button>
+        <p> {{paragraph}}</p>
+        <p v-text ="paragraph"></p>
+        <h2><a v-bind:href="link">2-Event Binding</a><br> <!--v-bind ile tanimlandigi icin suslu parantezleri kullanmaya gerek yok -->
+        <a v-bind:href="link3">3-Two Way Data Binding</a><br>
+        <a v-blind href="/4-vue-js.html">4-Computed Properties</a><br>
+        <a v-blind href="/5-vue-js.html">5-Class Dynamic Style</a></h2>
+        <p v-html="details"></p>
+    </div>
+    </center>   
+    <script>
+       
+       new Vue({
+            el :"#app",
+            data : {
+                title : "Header",
+                buttontitle :"click..",
+                paragraph :"lorem ipsum dolar sit amet",
+                link : "/2-vue-js.html",
+                link3 : "3-vue-js.html",
+                details :"<b>its a detail of news...</b>"
+            }
+       });
+
+    </script>
+</body>
+</html>

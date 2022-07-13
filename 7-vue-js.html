@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue.js | codes</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <style>
+            .box{
+                width: 400px;
+                height: 400px;
+                border: 2px solid #555;
+                background-color: #fbbd08;
+                margin-bottom: 10px;
+            }
+            .blue {
+                background-color: rgba(0, 0, 255, 0.151);
+                margin-bottom: 10px;
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-size: medium;
+            }
+            .margin{
+                margin-bottom: 10px;
+                
+            }
+            .red{
+                color: red;
+            }
+            ul {
+                margin: 0px;
+                padding: 0px;
+                list-style-type: none;
+                width: 450px;
+                
+            }
+            li {
+                padding: 5px 5px;
+                margin-bottom: 5px;
+                border-bottom: 1px solid #ccc;
+                background-color: rgba(15, 116, 199, 0.082);
+               
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="app">
+            <h1>{{ title }}</h1><hr>
+            <ul>
+                <li v-for="item in list">{{ item }}</li>
+            </ul>
+            <hr>
+            Piece : <input id="12" type="text" v-model="sellCount">
+            <ul>
+                <li v-for="product in productList" :class="colorByCount(product)">
+                    <span> {{ product.title }} - {{ product.count }}</span>
+                    <button :disabled="product.count <= 0" @click="product.count--">-1</button> <!--1. yontem-->
+                    <button :disabled="product.count <= 0" @click="product.count=product.count-sellCount">Index</button> <!--2. yontem-->
+                    <button :disabled="product.count <= 0" @click="sellProduct(product)">Index with function</button> <!--3. yontem-->
+                </li>
+            </ul>
+            <p v-if="sellAlert" class="red">No Stock</p> <!--sadece 3.button ile calisir-->
+            <h2>
+            <a v-blind href="/1-vue-js.html">1-Start</a><br>
+            <a v-blind href="/2-vue-js.html">2-Event Binding</a><br>
+            <a v-blind href="/3-vue-js.html">3-Two Way Data Binding</a><br>
+            <a v-blind href="/4-vue-js.html">4-Computed Properties</a><br>
+            <a v-blind href="/5-vue-js.html">5-Class Dynamic Style</a>
+            </h2><br>
+        </div>
+            <script>
+            new Vue({
+                el :"#app",
+                data : {
+                    sellCount:0,
+                    sellAlert : false,
+                    title:"Lists",
+                    list:["list 1", "list 2", "list 3"],
+                    productList:[
+                        {
+                            title : "MacPro",
+                            price : 100,
+                            count : 10,
+                        },
+                        {
+                            title : "Iphone",
+                            price : 80,
+                            count : 100,
+                        },
+                        {
+                            title : "Keybord",
+                            price : 10,
+                            count : 30,
+                        },
+                    ]
+                },
+                methods : {
+                    sellProduct(product){
+                        if(this.sellCount > product.count){
+                            this.sellAlert = true
+                        } else {
+                            product.count = product.count - this.sellCount
+                            this.sellAlert = false
+                        }
+                    },
+                    colorByCount(product){
+                        return {'red' : product.count <=0}
+                    }
+                }
+                                      
+            });
+        </script>
+    </body>
+</html>
